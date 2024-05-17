@@ -12,6 +12,20 @@ def calculate_center_shift(p0, p1, st):
     return shift_x, shift_y  # Returns the shifts in the X and Y directions.
 
 
+
+
+"""
+    Calculates how many meters correspond to a pixel.
+
+    Parameters:
+    altitude (float): The height of the camera above the ground (in meters).
+    fov (float): The horizontal field of view of the camera (in degrees).
+    image_width (int): The width of the image (in pixels). Default is 1920.
+    image_height (int): The height of the image (in pixels). Default is 1080.
+
+    Returns:
+    (float, float): The meters per pixel ratio (x direction, y direction).
+"""
 def calculate_pixel_to_meter_ratio(altitude, fov, image_width=1920, image_height=1080):
     # Convert FOV to radians
     fov_rad = np.deg2rad(fov)
