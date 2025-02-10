@@ -1,43 +1,44 @@
-# Drone Tracking Project
+# 🛸 Drone Coordinate Tracking Project
+Bu proje, bilgisayarlı görü teknikleri kullanarak bir drone'un hareketlerini takip eder. X ve Y koordinatlarındaki değişimleri hesaplar ve bu değişimleri gerçek dünya mesafelerine çevirir.
 
-This project uses computer vision techniques to track the movement of a drone. It calculates the shift in X and Y coordinates based on video frames and converts these shifts to real-world distances.
+## 🚀 Özellikler
+- **Optik akış (Optical Flow) kullanarak çerçeveler arasındaki merkezi kaymaları hesaplar.**
+- **Kamera yüksekliği ve görüş alanı kullanılarak piksel kaymaları gerçek dünya mesafelerine dönüştürülür.**
+- **Her çerçeve için X ve Y eksenindeki toplam konum değişikliği metre cinsinden hesaplanır.**
 
-## Features
+## 🛠️ Kullanılan Teknolojiler
+- **Python**
+- **YOLO (You Only Look Once)**
+- **OpenCV**
+- **NumPy**
+- **Pandas**
 
-- Calculates the center shift between consecutive frames using optical flow.
-- Converts pixel shifts to real-world distances using the altitude and field of view of the camera.
-- Outputs the total position shift in meters.
+## 📌 Gereksinimler
+Aşağıdaki kütüphanelerin yüklü olduğundan emin olun:
+```bash
+pip install opencv-python numpy pandas
+```
 
-## Requirements
+## ▶️ Nasıl Çalıştırılır?
+Aşağıdaki komutu çalıştırarak bir video dosyası ile programı başlatabilirsiniz:
+```bash
+python drone_tracking.py
+```
 
-- OpenCV
-- NumPy
+## 📜 Kod Açıklamaları
+- **calculate_center_shift(p0, p1, st):** İki çerçeve arasındaki optik akış ile X ve Y yönündeki ortalama kaymayı hesaplar.
+- **calculate_pixel_to_meter_ratio(altitude, fov, image_width=1920, image_height=1080):** Piksel ile metre arasındaki dönüşüm oranını hesaplar.
+- **Ana Script:** Bir video dosyasını okur, optik akışı hesaplar ve drone hareketlerini takip ederek her çerçevede kaymaları metre cinsinden yazdırır.
 
-## How to Run
+## 📊 Örnek Çıktı
+```
+Frame 1 - Shift X: 0.05 meters, Shift Y: 0.03 meters. Total Position - X: 0.05 meters, Y: 0.03 meters
+```
 
-1. Ensure you have the required libraries installed:
-    ```bash
-    pip install opencv-python numpy
-    ```
+## 📜 Lisans
+Bu proje **MIT Lisansı** altında paylaşılmıştır.
 
-2. Run the script with a video file as input:
-    ```bash
-    python drone_tracking.py
-    ```
+---
+📩 **Bana ulaşın:** [t.necatgok@gmail.com](mailto:t.necatgok@gmail.com)
 
-## Code Overview
-
-- **calculate_center_shift(p0, p1, st):** Computes the average shift in X and Y directions based on tracked points between two frames.
-- **calculate_pixel_to_meter_ratio(altitude, fov, image_width=1920, image_height=1080):** Calculates the conversion ratio from pixels to meters.
-- **Main Script:** Reads a video file, computes the optical flow, and tracks the movement of the drone, printing the shift in meters for each frame.
-
-## Example Output
-
-The script prints the shift in meters for each frame and the total position in meters.
-
-Frame 1 - Shift X: 0.05 meters, Shift Y: 0.03 meters. 
-Total Position - X: 0.05 meters, Y: 0.03 meters
-
-## License
-
-This project is licensed under the MIT License.
+---
